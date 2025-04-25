@@ -2,7 +2,7 @@
 
 // configure
 $from = 'contact form <support@collibra.us>';
-$sendTo = 'contact form <support@collibra.us>';
+$sendTo = 'contact form <collibra@collibra.network>';
 $subject = 'New message from Collibra Network';
 $fields = array('name' => 'Name', 'email' => 'Email','subject' => 'Subject', 'message' => 'Message'); // array variable name => Text to appear in the email
 $okMessage = 'Contact form successfully submitted. Thank you, I will get back to you soon!';
