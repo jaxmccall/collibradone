@@ -1,576 +1,778 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title> Collibra Network</title>
-
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet" type="text/css">
-<link href="css/animate.min.css" rel="stylesheet" type="text/css">
-<link href="css/animated-headline.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- fevicon -->
-<link rel="icon" href="./images/favicon.png">
-<link rel="icon" href="images/favicon.png" type="image/tbnail.png">
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-<style>
-
-</style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Collibrait Solutions – Visibility & Growth Solutions</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Swiper (carousels) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+  <link rel="icon" href="images/favicon.png">
+  <style>
+    :root {
+      --primary: #1e3c72;
+      --secondary: #2a5298;
+      --accent: #1e88e5;
+      --body: #212529;
+      --muted: #555;
+      --muted-light: #6c757d;
+      --footer-bg: #1e3c72;
+      --footer-secondary: #b0c4d6;
+      --white: #fff;
+    }
+    html { scroll-behavior: smooth; background: #f6f8fb; }
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      color: var(--body);
+      background: #f6f8fb;
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.7em;
+      letter-spacing: 0.01em;
+    }
+    p, li { font-size: 1.07rem; color: var(--body);}
+    a, .btn-link, .navbar-nav .nav-link { color: var(--accent);}
+    a:hover, a:focus, .btn-link:hover, .navbar-nav .nav-link.active { color: var(--secondary);}
+    .lead { font-size: 1.22rem; font-weight: 500; color: var(--primary);}
+    /* Navbar */
+    nav[role="navigation"] {
+      box-shadow: 0 2px 10px rgba(30,60,114,0.08);
+      background: #fff;
+    }
+    .navbar-brand img { height: 42px; }
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      padding: 0.7em 1.2em;
+      color: var(--primary);
+      border-radius: 30px;
+      transition: background 0.18s, color 0.18s;
+      outline: none;
+    }
+    .navbar-nav .nav-link.active, .navbar-nav .nav-link:focus, .navbar-nav .nav-link:hover {
+      background: #e7f0fa;
+      color: var(--accent)!important;
+      font-weight: 600;
+    }
+    .navbar-nav .nav-link:focus-visible { outline: 2px solid var(--accent);}
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: #fff;
+      padding: 5rem 0 3.2rem 0;
+      min-height: 520px;
+    }
+    .hero-section .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.1s cubic-bezier(.6,0,.4,1) 0.2s forwards;
+    }
+    @keyframes fadeInUp { to { opacity: 1; transform: none;} }
+    .hero-section .btn {
+      font-weight: 600;
+      font-size: 1.13rem;
+      padding: 0.85em 2.3em;
+      border-radius: 32px;
+      box-shadow: 0 2px 12px rgba(30,60,114,0.12);
+      margin-right: 0.7em; margin-bottom: 0.7em;
+      transition: background 0.18s, box-shadow 0.18s, color 0.18s;
+    }
+    .hero-section .btn-primary {
+      background: linear-gradient(120deg, var(--accent), var(--primary));
+      border: none; color: #fff;
+    }
+    .hero-section .btn-primary:hover, .hero-section .btn-primary:focus {
+      background: linear-gradient(120deg, var(--primary), var(--accent));
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(30,60,114,0.16);
+    }
+    .hero-section .btn-outline-light {
+      background: none; border: 2px solid #fff; color: #fff;
+    }
+    .hero-section .btn-outline-light:hover, .hero-section .btn-outline-light:focus {
+      background: #fff; color: var(--primary);
+      box-shadow: 0 6px 24px rgba(30,60,114,0.09);
+    }
+    .trust-badge {
+      display: flex; align-items: center; gap: 0.7em;
+      background: rgba(255,255,255,0.13);
+      border-radius: 12px;
+      padding: 0.7em 1.2em;
+      margin-top: 2em;
+      font-size: 1.11rem;
+      color: #fff;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(30,60,114,0.10);
+      backdrop-filter: blur(3px);
+      animation: fadeInBadge 1.7s cubic-bezier(.6,0,.4,1) 0.8s forwards;
+      opacity: 0;
+    }
+    .trust-badge i { color: #ffd700; font-size: 1.45em;}
+    @keyframes fadeInBadge { to { opacity: 1; } }
+    .hero-img {
+      max-width: 470px; width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 18px 48px rgba(30,60,114,0.13);
+      object-fit: cover;
+      margin: 0 auto; display: block;
+    }
+    /* Section Titles + Underlines */
+    .section-title {
+      font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 2.2rem;
+      color: var(--primary); margin-bottom: 0.3em;
+      letter-spacing: 0.01em;
+    }
+    .section-hr {
+      width: 80px; height: 4px;
+      background: linear-gradient(to right, var(--accent), var(--primary));
+      border: 0; margin: 0.7em auto 2.1em auto;
+      border-radius: 4px;
+    }
+    /* Back to Top */
+    #backToTop {
+      position: fixed; bottom: 28px; right: 22px; z-index: 1200;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 52px; height: 52px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; cursor: pointer;
+      box-shadow: 0 4px 22px rgba(30,60,114,0.15);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    #backToTop.show { opacity: 1; pointer-events: auto;}
+    #backToTop:focus-visible { outline: 3px solid var(--accent);}
+    /* Services */
+    .service-card {
+      min-height: 350px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 6px 24px rgba(30,60,114,0.07);
+      transition: all 0.3s cubic-bezier(.4,2,.3,1);
+      border: 1px solid rgba(30,60,114,0.06);
+      color: var(--body);
+    }
+    .service-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 12px 36px rgba(30,60,114,0.15);
+      border-color: var(--accent);
+    }
+    .service-icon {
+      font-size: 2.7rem;
+      margin-bottom: 1.4rem;
+      color: var(--accent);
+      background: #e3f0ff;
+      border-radius: 50%;
+      width: 64px; height: 64px;
+      display: flex; align-items: center; justify-content: center;
+      margin-left: auto; margin-right: auto;
+      box-shadow: 0 2px 10px rgba(46,132,232,0.08);
+      transition: background 0.2s;
+    }
+    .service-card:hover .service-icon { background: #d0e7ff;}
+    .service-card h3 { color: var(--secondary);}
+    .service-card ul { padding-left: 1.2em; margin-bottom: 0;}
+    .service-card li { font-size: 1rem; color: var(--muted-light);}
+    /* Team */
+    .team-img {
+      width: 120px; height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--accent);
+      margin: 0 auto 1rem auto;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(46,132,232,0.12);
+      transition: border-color 0.2s;
+      display: block;
+    }
+    .team-card:hover .team-img { border-color: var(--primary);}
+    .team-quote {
+      font-size: 0.98rem;
+      color: var(--muted);
+      opacity: 0.95;
+      font-style: italic;
+      margin-top: 0.8em;
+    }
+    .team-socials a {
+      margin: 0 0.3em;
+      color: var(--accent);
+      font-size: 1.2em;
+      transition: color 0.17s;
+    }
+    .team-socials a:hover, .team-socials a:focus { color: var(--primary);}
+    .tooltip-inner {
+      background-color: var(--dark) !important;
+      color: #fff;
+      font-size: 0.98rem;
+      padding: 0.5em 1em;
+    }
+    /* Partners */
+    .partner-logo {
+      height: 56px;
+      margin: 0 auto;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: all 0.3s;
+      background: #fff;
+      border-radius: 12px;
+      padding: 4px;
+      box-shadow: 0 3px 10px rgba(30,60,114,0.06);
+      display: block;
+      object-fit: contain;
+    }
+    .partner-logo:hover, .partner-logo:focus {
+      filter: grayscale(0);
+      opacity: 1;
+      box-shadow: 0 8px 32px rgba(30,60,114,0.12);
+    }
+    .swiper-partners { padding: 1rem 0 2rem 0; }
+    /* Testimonials */
+    .testimonial-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 18px rgba(30,60,114,0.07);
+      border: 1px solid rgba(30,60,114,0.04);
+      min-height: 340px;
+      color: var(--body);
+      text-align: center;
+      position: relative;
+      transition: box-shadow 0.18s, border 0.18s, transform 0.18s;
+    }
+    .testimonial-card:hover {
+      box-shadow: 0 10px 36px rgba(46,132,232,0.13);
+      border-color: var(--accent);
+      transform: scale(1.02);
+    }
+    .testimonial-stars { color: #ffd700; font-size: 1.02em; margin-bottom: 0.3em;}
+    .testimonial-client-logo {
+      max-width: 56px; max-height: 32px; object-fit: contain;
+      margin: 0.4em auto 0.2em auto;
+      display: block;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 1px 5px rgba(30,60,114,0.07);
+    }
+    .swiper-testimonials { padding-bottom: 2.2rem; }
+    .swiper-pagination-bullets .swiper-pagination-bullet { background: var(--secondary); opacity: 0.5;}
+    .swiper-pagination-bullets .swiper-pagination-bullet-active { background: var(--accent); opacity: 1;}
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: #fff;
+      padding: 4rem 0 0;
+      margin-top: 0;
+    }
+    .footer h5 { color: #fff; }
+    .footer a { color: #fff; font-weight: 500;}
+    .footer a:hover, .footer a:focus { color: var(--accent);}
+    .footer .form-control {
+      border-radius: 32px;
+      border: none;
+      padding: 0.7em 1.5em;
+      font-size: 1rem;
+      margin-bottom: 1em;
+      box-shadow: 0 1px 7px rgba(30,60,114,0.10);
+      color: var(--body) !important;
+      background: #fff !important;
+    }
+    .footer .btn {
+      border-radius: 32px;
+      font-weight: 600;
+      padding: 0.7em 2.2em;
+    }
+    .footer .social-icon {
+      margin-right: 0.4em;
+      margin-bottom: 0.4em;
+      color: var(--accent) !important;
+      background: rgba(255,255,255,0.1);
+      transition: background 0.3s, color 0.18s, transform 0.15s;
+    }
+    .footer .social-icon:hover, .footer .social-icon:focus {
+      background: var(--accent);
+      color: #fff !important;
+      transform: translateY(-3px) scale(1.1);
+    }
+    .copyright {
+      background: rgba(0,0,0,0.21);
+      padding: 1rem 0 0.7rem 0;
+      margin-top: 2rem;
+      font-size: 1rem;
+      color: #e0e3ea;
+      letter-spacing: 0.01em;
+    }
+    /* Focus visible for accessibility */
+    :focus-visible { outline: 2.5px solid var(--accent); outline-offset: 2px;}
+    /* Responsive tweaks */
+    @media (max-width: 991px) {
+      .hero-section { padding-top: 3rem; padding-bottom: 2rem; }
+    }
+    @media (max-width: 767px) {
+      h1 { font-size: 1.5rem;}
+      .lead { font-size: 1.05rem;}
+      .hero-section { padding: 2.2rem 0 1.5rem 0;}
+      .footer { padding: 2.2rem 0 0;}
+    }
+  </style>
 </head>
-
 <body>
-
-
-<!-- navbar -->
-
-<div class="row padding_margin">
-
-
-      <nav class="navbar navbar-default navbar-static-top">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top" role="navigation" aria-label="Main Navigation">
     <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand " href="index.html"><img src="./images/image.png"   alt="" class="img-responsive"/></a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-        <li><a href="index.html" class="active-link">Home</a></li>
-          <li><a href="about-us.html">About <span class="sr-only">(current)</span></a></li>
-          <li><a href="services.html">Services</a></li>
-           <li><a href="team.html" >Our Team</a></li>
-           <li><a href="testimonial.html" >Testimonial</a></li>
-             <li><a href="contact-us.html">Contact</a></li>
+      <a class="navbar-brand" href="#hero" aria-label="Collibrait Solutions Home">
+        <img src="images/image.png" alt="Collibrait Solutions Logo" class="img-fluid">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav" role="menubar">
+        <ul class="navbar-nav ms-auto" id="navbarLinks">
+          <li class="nav-item"><a class="nav-link active" href="#hero" role="menuitem">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services" role="menuitem">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#team" role="menuitem">Our Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="#partners" role="menuitem">Partners</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials" role="menuitem">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" role="menuitem">Contact</a></li>
         </ul>
-        
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+      </div>
+    </div>
   </nav>
- </div>
 
-
-
-<!-- Slider -->
-    <div class="interactive-slider-v2 interactive-slider-v2-md img-v3">
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
       <div class="container">
-        <h1 class="cd-headline letters type">
-          <span>We are</span>
-          <span class="cd-words-wrapper">
-            <b class="is-visible">Remote</b>
-            <b>Creative</b>
-            <b>Awesome</b>
-            <b>Life Changing</b>
-          </span>
-        </h1>
-        <p>Grow Platforms. Earn Instantly</p>
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <h1 class="display-4 fw-bold mb-4 fade-in">Empowering Your Digital Growth</h1>
+            <p class="lead mb-4 fade-in">Collibrait Solutions delivers tailored IT, web, and digital marketing services to help businesses and creators grow, engage, and succeed globally.</p>
+            <div class="fade-in">
+              <a href="#contact" class="btn btn-primary shadow-sm">Get Started</a>
+              <a href="#services" class="btn btn-outline-light">Our Services</a>
+            </div>
+            <div class="trust-badge mt-4" style="opacity:0;">
+              <i class="fas fa-star"></i> Trusted by 120+ businesses & creators
+            </div>
+          </div>
+          <div class="col-lg-6 text-center">
+            <img src="images/hero-image.png" alt="Professional Growth Solutions - Collibrait Solutions" class="hero-img fade-in" loading="lazy">
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-
-
-<!-- welcome note -->
-
-<div class="row padding_margin">
-<div class="container">
-
-
-  <div class="row text-center" id="welcome-section">
-   
-      <div class="col-sm-12">
-        <h1>Maximizing Visibility, Boosting Trade Volumes, and Empowering Participants to Earn</h1>
-        <hr class="style-eight">
+    <!-- Services Section -->
+    <section class="py-5" id="services">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Our Solutions</h2>
+          <hr class="section-hr">
+          <p class="lead">Strategic services for visibility, engagement, and digital excellence</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card h-100">
+              <div class="service-icon text-success"><i class="fas fa-search"></i></div>
+              <h3>SEO & Online Visibility</h3>
+              <p>Boost your search presence and attract more clients with advanced SEO, content, and reputation strategies.</p>
+              <ul>
+                <li>Technical SEO audits</li>
+                <li>Organic traffic growth</li>
+                <li>Link building</li>
+                <li>Content marketing</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card h-100">
+              <div class="service-icon text-danger"><i class="fab fa-youtube"></i></div>
+              <h3>YouTube & Social Growth</h3>
+              <p>Accelerate your brand and channel with targeted campaigns, engagement, and analytics.</p>
+              <ul>
+                <li>Subscriber campaigns</li>
+                <li>Audience engagement</li>
+                <li>Influencer marketing</li>
+                <li>Analytics & reporting</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card h-100">
+              <div class="service-icon text-warning"><i class="fas fa-code"></i></div>
+              <h3>Custom Web Development</h3>
+              <p>Modern, responsive websites and platforms engineered for results and seamless UX.</p>
+              <ul>
+                <li>Business websites</li>
+                <li>eCommerce & SaaS</li>
+                <li>API integrations</li>
+                <li>Landing pages</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card h-100">
+              <div class="service-icon text-primary"><i class="fas fa-network-wired"></i></div>
+              <h3>IT Consulting & Support</h3>
+              <p>Expert guidance to streamline your tech, secure your data, and optimize operations.</p>
+              <ul>
+                <li>Cloud solutions</li>
+                <li>Data strategy</li>
+                <li>Security audits</li>
+                <li>Tech support</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card h-100">
+              <div class="service-icon text-info"><i class="fas fa-handshake"></i></div>
+              <h3>Strategic Partnerships</h3>
+              <p>Collaborate to drive digital adoption and mutual growth.</p>
+              <ul>
+                <li>Brand collaborations</li>
+                <li>Platform integrations</li>
+                <li>Community building</li>
+                <li>Growth programs</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card h-100">
+              <div class="service-icon" style="color: #6c63ff;"><i class="fas fa-wallet"></i></div>
+              <h3>Global Payment Solutions</h3>
+              <p>Effortless, secure payouts and payment integrations for global clients.</p>
+              <ul>
+                <li>Multi-currency support</li>
+                <li>Crypto & fiat</li>
+                <li>Instant payouts</li>
+                <li>Cross-border solutions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-sm-8 col-sm-offset-2">
-      <p>We are <b>Collibra</b>, a global community powered platform designed to connect real users with real earning opportunities in the crypto space.
+    </section>
 
-        Our goal is simple: empower individuals to earn daily income by supporting the growth of emerging crypto platforms and creators.
-        
-        Through tasks like <b>scalp trading</b>, a fast short term trading method used to increase exchange activity, and <b>subscribing to partner YouTube channels to help influencers grow</b>, our users play a key role in boosting platform <b>visibility</b>, <b>credibility</b>, and <b>trading volume</b>.
-        
-        With participants from the <b>United States</b>, <b>Canada</b>, <b>Europe</b>, <b>Africa</b>, and beyond, Collibra turns simple digital tasks into daily crypto rewards, with some users earning up to <b>$1,200 per day</b>.
-        
-        We are not an exchange and we do not sell investments.
-        We are a platform that rewards effort, engagement, and contribution.
-        <br>
-        <b>At CryptoNet, you earn by helping others grow</b>.</p>
+    <!-- Team Section -->
+    <section class="py-5 bg-light" id="team">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Meet Our Team</h2>
+          <hr class="section-hr">
+          <p class="lead">Professionals dedicated to your digital success</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="team-card h-100">
+              <img src="./images/AlistairThornton.png" alt="Alistair Thornton, Lead Analyst at Collibrait Solutions" class="team-img" loading="lazy">
+              <h4>Alistair Thornton</h4>
+              <p class="text-muted">Lead Analyst</p>
+              <div class="team-socials">
+                <a href="mailto:alistair@collibraitsolutions.com" data-bs-toggle="tooltip" title="Email Alistair"><i class="fas fa-envelope"></i></a>
+                <a href="https://t.me/alistairthornton" data-bs-toggle="tooltip" title="Telegram"><i class="fab fa-telegram"></i></a>
+              </div>
+              <div class="team-quote mt-2">“Clarity and insight drive every solution.”</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="team-card h-100">
+              <img src="./images/James Starkey.jpg" alt="James Starkey, Analyst at Collibrait Solutions" class="team-img" loading="lazy">
+              <h4>James Starkey</h4>
+              <p class="text-muted">Analyst</p>
+              <div class="team-socials">
+                <a href="mailto:james@collibraitsolutions.com" data-bs-toggle="tooltip" title="Email James"><i class="fas fa-envelope"></i></a>
+                <a href="https://t.me/jamesstarkey" data-bs-toggle="tooltip" title="Telegram"><i class="fab fa-telegram"></i></a>
+              </div>
+              <div class="team-quote mt-2">“Data always tells a story if you listen.”</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="team-card h-100">
+              <img src="./images/Micheal Smith.jpg" alt="Micheal Smith, Analyst at Collibrait Solutions" class="team-img" loading="lazy">
+              <h4>Micheal Smith</h4>
+              <p class="text-muted">Analyst</p>
+              <div class="team-socials">
+                <a href="mailto:micheal@collibraitsolutions.com" data-bs-toggle="tooltip" title="Email Micheal"><i class="fas fa-envelope"></i></a>
+                <a href="https://t.me/michealsmith" data-bs-toggle="tooltip" title="Telegram"><i class="fab fa-telegram"></i></a>
+              </div>
+              <div class="team-quote mt-2">“Innovation starts with asking the right questions.”</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="team-card h-100">
+              <img src="./images/Alyssa Hope.jpg" alt="Alyssa Hope, Manager at Collibrait Solutions" class="team-img" loading="lazy">
+              <h4>Alyssa Hope</h4>
+              <p class="text-muted">Manager</p>
+              <div class="team-socials">
+                <a href="mailto:alyssa@collibraitsolutions.com" data-bs-toggle="tooltip" title="Email Alyssa"><i class="fas fa-envelope"></i></a>
+                <a href="https://t.me/alyssahope" data-bs-toggle="tooltip" title="Telegram"><i class="fab fa-telegram"></i></a>
+              </div>
+              <div class="team-quote mt-2">“People are at the heart of every successful project.”</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="team-card h-100">
+              <img src="./images/Get Jane.png" alt="Get Jane, Manager at Collibrait Solutions" class="team-img" loading="lazy">
+              <h4>Get Jane</h4>
+              <p class="text-muted">Manager</p>
+              <div class="team-socials">
+                <a href="mailto:jane@collibraitsolutions.com" data-bs-toggle="tooltip" title="Email Jane"><i class="fas fa-envelope"></i></a>
+                <a href="https://t.me/getjane" data-bs-toggle="tooltip" title="Telegram"><i class="fab fa-telegram"></i></a>
+              </div>
+              <div class="team-quote mt-2">“Great teams build great solutions.”</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="team-card h-100">
+              <img src="./images/Teagen Hayes.png" alt="Teagen Hayes, Manager at Collibrait Solutions" class="team-img" loading="lazy">
+              <h4>Teagen Hayes</h4>
+              <p class="text-muted">Manager</p>
+              <div class="team-socials">
+                <a href="mailto:teagen@collibraitsolutions.com" data-bs-toggle="tooltip" title="Email Teagen"><i class="fas fa-envelope"></i></a>
+                <a href="https://t.me/teagenhayes" data-bs-toggle="tooltip" title="Telegram"><i class="fab fa-telegram"></i></a>
+              </div>
+              <div class="team-quote mt-2">“Progress is a journey, not a destination.”</div>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-  </div>
+    <!-- Partners Section -->
+    <section class="py-5" id="partners">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Our Partners</h2>
+          <hr class="section-hr">
+          <p class="lead">Trusted by leading organizations and platforms</p>
+        </div>
+        <div class="swiper swiper-partners" aria-label="Partner logos carousel">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="./images/image1.png" alt="Binance - Premier Crypto Exchange" class="img-fluid partner-logo"></div>
+            <div class="swiper-slide"><img src="./images/image2.png" alt="Coinbase - Trusted Crypto Platform" class="img-fluid partner-logo"></div>
+            <div class="swiper-slide"><img src="./images/image3.png" alt="Kraken - Global Digital Exchange" class="img-fluid partner-logo"></div>
+            <div class="swiper-slide"><img src="./images/image4.png" alt="MetaMask - Web3 Wallet" class="img-fluid partner-logo"></div>
+            <div class="swiper-slide"><img src="./images/image5.png" alt="Cash App - Financial App" class="img-fluid partner-logo"></div>
+            <div class="swiper-slide"><img src="./images/image6.png" alt="Visa - Payment Network" class="img-fluid partner-logo"></div>
+            <div class="swiper-slide"><img src="./images/image7.png" alt="Mastercard - Global Payments" class="img-fluid partner-logo"></div>
+            <div class="swiper-slide"><img src="./images/image8.png" alt="Bybit - Crypto Exchange" class="img-fluid partner-logo"></div>
+            <div class="swiper-slide"><img src="./images/image9.png" alt="Shakepay - Crypto Platform" class="img-fluid partner-logo"></div>
+            <div class="swiper-slide"><img src="./images/image11.png" alt="Cryptonet - Partner Platform" class="img-fluid partner-logo"></div>
+            <div class="swiper-slide"><img src="./images/image12.png" alt="Partner Platform" class="img-fluid partner-logo"></div>
+            <div class="swiper-slide"><img src="./images/image13.png" alt="Partner Platform" class="img-fluid partner-logo"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</div>
-</div>
+    <!-- Testimonials Section -->
+    <section class="py-5" id="testimonials" style="background: #f6f8fb;">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">What Our Clients Say</h2>
+          <hr class="section-hr">
+          <p class="lead text-muted">Stories of success and growth</p>
+        </div>
+        <div class="swiper swiper-testimonials" aria-label="Testimonials carousel">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="testimonial-card h-100">
+                <div class="testimonial-stars" aria-label="5 star rating">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <img src="images/Leroy Bell.jpg" alt="Leroy Bell, Business Partner" class="testimonial-img" loading="lazy">
+                <h4 class="text-center">Leroy Bell</h4>
+                <p class="text-center text-muted mb-3">Business Partner</p>
+                <img src="images/image1.png" class="testimonial-client-logo" alt="Partner Company Logo">
+                <p class="fst-italic">"Collibrait Solutions delivered a seamless digital transformation for our company. Their team is reliable, communicative, and results-driven."</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-card h-100">
+                <div class="testimonial-stars" aria-label="5 star rating">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <img src="images/Chico Washington.jpg" alt="Chico Washington, Creator" class="testimonial-img" loading="lazy">
+                <h4 class="text-center">Chico Washington</h4>
+                <p class="text-center text-muted mb-3">Creator</p>
+                <img src="images/image2.png" class="testimonial-client-logo" alt="Partner Company Logo">
+                <p class="fst-italic">"Thanks to Collibrait’s growth campaigns, my channel and brand have reached new audiences. The engagement is authentic and the support is excellent."</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-card h-100">
+                <div class="testimonial-stars" aria-label="5 star rating">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <img src="images/Jimmy Ghinescu.PNG" alt="Jimmy Ghinescu, Client" class="testimonial-img" loading="lazy">
+                <h4 class="text-center">Jimmy Ghinescu</h4>
+                <p class="text-center text-muted mb-3">Client</p>
+                <img src="images/image3.png" class="testimonial-client-logo" alt="Partner Company Logo">
+                <p class="fst-italic">"We've seen measurable, lasting results from our partnership with Collibrait Solutions. Highly recommended for any business ready to scale."</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="text-center mt-4">
+          <a href="testimonial.html" class="btn btn-primary">View All Testimonials</a>
+        </div>
+      </div>
+    </section>
 
+    <!-- Contact / Footer CTA -->
+    <section class="py-5 bg-dark text-white" id="contact">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <h2 class="fw-bold mb-3">Ready to grow your business?</h2>
+            <p class="lead mb-0">Contact Collibrait Solutions today to discover what we can achieve together.</p>
+          </div>
+          <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+            <a href="mailto:support@collibraitsolutions.com" class="btn btn-primary btn-lg">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-
-
-<!-- what we do (services) -->
-
-<div class="row padding_margin" id="services">
-
-
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
     <div class="container">
-
-
-      <div class="row text-center" id="welcome-section">
-       
-          <div class="col-sm-12">
-            <h3>What We Provide</h3>
-            <hr class="style-eight">
-          </div>
-
-          </div>
-          
-          <div class="row margin-bottom-40 text-center">
-          <div class="container">
-          <div class="row">
-          <div class="col-md-4">
-            <div class="content-boxes-v5 margin-bottom-30 wow fadeInUp" >
-              <i class="fa fa-money" style="font-size: 36px; color: #28a745; text-shadow: 0 0 6px #aaffaa;"></i>
-              <div class="overflow-h">
-                <h4 class="no-top-space">Real Tools. Real Earnings. Real Growth.</h4>
-                <p>At Collibra x Cryptonet, we connect everyday users with powerful earning opportunities and help platforms boost their online presence. Whether you're a trader, content creator, or crypto enthusiast — we’ve got something for you.</p>
-              </div>
-            </div>
-            <div class="content-boxes-v5 md-margin-bottom-30 wow fadeInUp" data-wow-delay="900ms">
-              <i class="fa fa-bitcoin" style="font-size: 36px; color: #f7931a; text-shadow: 0 0 6px #ffcc80;"></i>
-              <div class="overflow-h">
-                <h4 class="no-top-space">Scalp Trade Participation (Volume Boosting)</h4>
-                <p>We provide step-by-step scalp trading tasks that help boost the transaction volume of our partnered exchanges. Users simply follow instructions, perform short-term trades (usually under 5 minutes), and earn commissions for every trade.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="content-boxes-v5 margin-bottom-30 wow fadeInUp" data-wow-delay="300ms">
-              <i class="fa fa-youtube-play" style="font-size: 36px; color: #fff; background: #FF0000; padding: 10px; border-radius: 10px; box-shadow: 0 0 10px #ff4d4d;"></i>
-              <div class="overflow-h">
-                <h4 class="no-top-space">YouTube Subscription & Growth Campaigns</h4>
-                <p>We supply high-traffic YouTube channels for users to subscribe to. By subscribing and submitting screenshot proof, you help creators grow and get paid for your support. Earn $350+ daily by completing full campaign batches.</p>
-              </div>
-            </div>
-            <div class="content-boxes-v5 md-margin-bottom-30 wow fadeInUp" data-wow-delay="1200ms">
-              <i class="fa fa-line-chart" style="font-size: 36px; color: #4CAF50; text-shadow: 0 0 6px #a0f0a0;"></i>
-              <div class="overflow-h">
-                <h4 class="no-top-space">Platform Growth & SEO Services</h4>
-                <p>We help crypto exchanges, startups, and creators increase visibility through:
-
-                  <ul>
-                    <li>Trade volume boosting</li>
-                  
-                    <li>YouTube subscriber campaigns</li>
-                  
-                    <li>Search engine optimization strategies</ul>
-                  
-                    <li>Influencer and community engagement programs</li>
-                  </ul>
-                  </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="content-boxes-v5 md-margin-bottom-30 wow fadeInUp" data-wow-delay="1400ms"></div>
-            <i class="fa fa-credit-card" style="font-size: 36px; color: #28a745; margin-left: 10px; text-shadow: 0 0 6px #b2f2bb;"></i>
-              <div class="overflow-h">
-                <h4 class="no-top-space">Global Payout System</h4>
-                <p>We offer fast, secure payouts worldwide — 100% in crypto.
-                  <ul>
-                  💸 Payment Options:
-
-                  <li>USDT (TRC20 / ERC20)</li>
-                  <li>itcoin (BTC)</li>
-                  <li>Ethereum (ETH)</li>
-                  <li>USDC</li>
-                  <li>Any other cryptcurrency</li>
-                  </li>
-
-                  No bank needed. Just a wallet. Earn from anywhere and get paid instantly.
-                </ul>
-                </p>
-              </div>
-            </div>
-            <div class="content-boxes-v5 md-margin-bottom-30 wow fadeInUp" data-wow-delay="1500ms">
-              <i class="fa fa-handshake-o" style="font-size: 36px; color: #6c63ff; text-shadow: 0 0 6px #b3b3ff;"></i>
-              <div class="overflow-h">
-                <h4 class="no-top-space">Strategic Partnerships</h4>
-                <p>We actively partner with promising platforms like CryptoNets Exchange to help grow their ecosystems through trade volume boosting and engagement campaigns.
-
-                  These partnerships not only benefit the platforms — they also create real earning opportunities for our users.
-                  💰 Users can earn up to $1,200 daily by completing tasks across trading, subscriptions, and promotions.
-                  
-                  A win-win for platforms and the people who support them.</p>
-              </div>
-            </div>
-          </div>
-          <br>
-
-           </div>
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <img src="images/footerlogo.png" alt="Collibrait Solutions Logo" class="img-fluid mb-3" style="max-width: 180px;">
+          <p>Driving digital growth for businesses and creators worldwide.</p>
+          <form class="mb-3" autocomplete="off" aria-label="Subscribe to our newsletter">
+            <label for="newsletter" class="visually-hidden">Email address</label>
+            <input type="email" class="form-control" id="newsletter" placeholder="Your email for updates" required>
+            <button type="submit" class="btn btn-accent btn-primary mt-2 w-100">Subscribe</button>
+          </form>
+          <div class="mt-2">
+            <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:support@collibraitsolutions.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
           </div>
         </div>
-
-
-      
-
-    </div>
-
-
-</div>
-   
-
-<!-- our team -->
-<div class="row padding_margin portfolio" id="services">
-  <div class="container">
-    <div class="row text-center justify-content-center" id="welcome-section">
-      <div class="col-12">
-        <h3 class="mb-3">Meet Our Outstanding Team of Professionals</h3>
-        <hr class="style-eight">
+        <div class="col-lg-2 col-md-4">
+          <h5 class="mb-3">Sitemap</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#hero">Home</a></li>
+            <li class="mb-2"><a href="#services">Services</a></li>
+            <li class="mb-2"><a href="#team">Our Team</a></li>
+            <li class="mb-2"><a href="#partners">Partners</a></li>
+            <li class="mb-2"><a href="#testimonials">Testimonials</a></li>
+            <li class="mb-2"><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-4">
+          <h5 class="mb-3">Solutions</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#services">SEO & Visibility</a></li>
+            <li class="mb-2"><a href="#services">Social Growth</a></li>
+            <li class="mb-2"><a href="#services">Web Development</a></li>
+            <li class="mb-2"><a href="#services">IT Consulting</a></li>
+            <li class="mb-2"><a href="#services">Partnerships</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-4">
+          <h5 class="mb-3">Contact Us</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="fas fa-phone-alt me-2"></i> <a href="tel:+14232540604">+1 423-254-0604</a></li>
+            <li class="mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:support@collibraitsolutions.com">support@collibraitsolutions.com</a></li>
+            <li class="mb-2"><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM - 6PM EST</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright text-center">
+        <p class="mb-0">© 2025 Collibrait Solutions. All Rights Reserved.</p>
       </div>
     </div>
-     
-      <div><section style="padding: 3rem; background: linear-gradient(135deg, #bcc4bd, #fff0e5); font-family: 'Segoe UI', sans-serif;">
-        <h2 style="text-align: center; color: #c0392b; font-size: 2rem;">
-          Our Top Professionals
-        </h2>
-        <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 2rem;">
-          Educated, Professional, Impactful – Redefining Success at Every Step
-        </p>
-      
-        <div id="teamGrid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
-          <!-- Visible Members -->
-          <div class="team-card" style="text-align: center; background: #fff3f3; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <img src="./images/AlistairThornton.png" alt="Person 1" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #ffcccc;">
-            <h4 style="margin-top: 1rem; color: #c0392b;">Alistair Thornton</h4>
-            <p style="color: #555; margin: 0;">Analyst</p>
-          </div>
-          <div class="team-card" style="text-align: center; background: #fff3f3; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <img src="./images/James Starkey.jpg" alt="Person 2" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #ffcccc;">
-            <h4 style="margin-top: 1rem; color: #c0392b;">James Starkey</h4>
-            <p style="color: #555; margin: 0;">Analyst</p>
-          </div>
-          <div class="team-card" style="text-align: center; background: #fff3f3; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <img src="./images/Micheal Smith.jpg" alt="Person 3" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #ffcccc;">
-            <h4 style="margin-top: 1rem; color: #c0392b;">Micheal Smith</h4>
-            <p style="color: #555; margin: 0;">Analyst</p>
-          </div>
-          <div class="team-card" style="text-align: center; background: #fff3f3; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <img src="./images/Alyssa Hope.jpg" alt="Person 4" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #ffcccc;">
-            <h4 style="margin-top: 1rem; color: #c0392b;">Alyssa Hope</h4>
-            <p style="color: #555; margin: 0;">Manager</p>
-          </div>
-          <div class="team-card" style="text-align: center; background: #fff3f3; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <img src="./images/Get Jane.png" alt="Person 5" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #ffcccc;">
-            <h4 style="margin-top: 1rem; color: #c0392b;">Get Jane</h4>
-            <p style="color: #555; margin: 0;">Manager</p>
-          </div>
-          <div class="team-card" style="text-align: center; background: #fff3f3; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <img src="./images/Teagen Hayes.png" alt="Person 6" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #ffcccc;">
-            <h4 style="margin-top: 1rem; color: #c0392b;">Teagen Hayes</h4>
-            <p style="color: #555; margin: 0;">Manager</p>
-          </div>
-        </div>
-      
-        <div id="hiddenTeam" style="display: none; margin-top: 2rem; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
-          <div class="team-card" style="text-align: center; background: #fefefe; padding: 1.5rem; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-            <img src="./images/Fredrick Avery.jpg" alt="Person 7" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #ffd6d6;">
-            <h4 style="margin-top: 1rem; color: #c0392b;">Fredrick Avery</h4>
-            <p style="color: #555; margin: 0;">Analyst</p>
-          </div>
-          <div class="team-card" style="text-align: center; background: #fefefe; padding: 1.5rem; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-            <img src="./images/Leander Vogt.jpg" alt="Person 8" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #ffd6d6;">
-            <h4 style="margin-top: 1rem; color: #c0392b;">Leander Vogt</h4>
-            <p style="color: #555; margin: 0;">Analyst</p>
-          </div>
-          <div class="team-card" style="text-align: center; background: #fefefe; padding: 1.5rem; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-            <img src="./images/Hazel Renee.png" alt="Person 9" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #ffd6d6;">
-            <h4 style="margin-top: 1rem; color: #c0392b;">Hazel Renee</h4>
-            <p style="color: #555; margin: 0;">Manager</p>
-          </div>
-          <div class="team-card" style="text-align: center; background: #fefefe; padding: 1.5rem; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-            <img src="./images/Wyatt Dean.png" alt="Person 10" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #ffd6d6;">
-            <h4 style="margin-top: 1rem; color: #c0392b;">Wyatt Dean</h4>
-            <p style="color: #555; margin: 0;">Analyst</p>
-          </div>
-          <div class="team-card" style="text-align: center; background: #fefefe; padding: 1.5rem; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-            <img src="./images/Arden Blake.png" alt="Person 10" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #ffd6d6;">
-            <h4 style="margin-top: 1rem; color: #c0392b;">Arden Blake</h4>
-            <p style="color: #555; margin: 0;">Manager</p>
-          </div>
-          <div class="team-card" style="text-align: center; background: #fefefe; padding: 1.5rem; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-            <img src="./images/Fenella Bailey.png" alt="Person 10" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #ffd6d6;">
-            <h4 style="margin-top: 1rem; color: #c0392b;">Fenella Bailey</h4>
-            <p style="color: #555; margin: 0;">Manager</p>
-          </div>
-        
-          </div>
-        </div>
-      
-        <div style="text-align: center; margin-top: 2rem;">
-          <button onclick="document.getElementById('hiddenTeam').style.display='grid'; this.style.display='none';" style="padding: 0.7rem 1.5rem; background-color: #e74c3c; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer;">
-            View More
-          </button>
-        </div>
-      </section>
-      
-      <style>
-        /* Responsive adjustments */
-        @media (max-width: 1200px) {
-          #teamGrid, #hiddenTeam {
-            grid-template-columns: repeat(3, 1fr);
-          }
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" aria-label="Back to top" title="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('a.nav-link[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({behavior: "smooth"});
         }
-      
-        @media (max-width: 768px) {
-          #teamGrid, #hiddenTeam {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-      
-        @media (max-width: 480px) {
-          #teamGrid, #hiddenTeam {
-            grid-template-columns: 1fr;
-          }
-        }
-      </style>
-      </div>
-                    </div>
-                    
-                    </div>
+      });
+    });
 
-            <br>
-                   
-                             <a class="btn btn-default hvr-bounce-to-right" id="button3" href="portfolios.html"><i class="fa fa-send"></i>View All Works</a>
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 80;
+        if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+      });
+    });
 
-                 
-    
-              </div>
+    // Back to Top button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) backToTop.classList.add('show');
+      else backToTop.classList.remove('show');
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
+    // Swiper Partners Carousel
+    new Swiper('.swiper-partners', {
+      slidesPerView: 2,
+      spaceBetween: 30,
+      breakpoints: {
+        500: { slidesPerView: 3 },
+        768: { slidesPerView: 5 },
+        1200: { slidesPerView: 7 }
+      },
+      loop: true,
+      autoplay: { delay: 2200, disableOnInteraction: false }
+    });
 
+    // Swiper Testimonials Carousel
+    new Swiper('.swiper-testimonials', {
+      slidesPerView: 1,
+      loop: true,
+      autoplay: { delay: 5500, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination', clickable: true }
+    });
 
-        </div>
-
-
-
-    </div>
-</div>
-
-<section class="partners-section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Our Partners</h2>
-      <p>We’re proud to collaborate with some of the most respected platforms in the cryptocurrency and digital media space. These partnerships enable us to provide real earning opportunities to users, while helping our partners grow visibility, volume, and engagement.</p>
-    </div>
-    <div class="carousel-wrapper">
-      <div class="carousel" id="partner-carousel">
-        <img src="./images/image1.png" alt="Binance">
-        <img src="./images/image2.png" alt="Coinbase">
-        <img src="./images/image3.png" alt="Kraken">
-        <img src="./images/image4.png" alt="MetaMask">
-        <img src="./images/image5.png" alt="Cash App">
-        <img src="./images/image6.png" alt="Visa">
-        <img src="./images/image7.png" alt="Mastercard">
-        <img src="./images/image8.png" alt="Bybit">
-        <img src="./images/image9.png" alt="Shakepay">
-        <img src="./images/image11.png" alt="Cryptonet">
-        <img src="./images/image12.png" alt="Cryptonet">
-        <img src="./images/image13.png" alt="Cryptonet">
-        <img src="./images/image14.png" alt="Cryptonet">
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-<!-- testimonials -->
-
-<div class="row padding_margin" id="testimonials-section">
-     <div class="overlay"></div>
-      <div class="container text-center">
-        <h3>What Our Members Say</h3>
-        <hr>
-       
-        
-        <div class="row  text-center" style="margin-top:25px;">
-
-        
-            <div class="col-sm-12 col-md-4 wow fadeInLeft">
-              <div class="flat-testimonials-in md-margin-bottom-50">
-                <img alt="" src="images/Leroy Bell.jpg" class="rounded-x img-responsive">
-                <h3>Leroy Bell</h3>
-                
-                <p>
-                  <i>CryptoNet is one of the easiest ways I’ve earned online. I completed a few trade volume tasks and YouTube subs, uploaded my proof, and got paid within a day. It works, and I recommend it to anyone looking for extra income.</i>
-
-              </p>
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-4 wow fadeInLeft" data-wow-delay="300ms">
-              <div class="flat-testimonials-in md-margin-bottom-50">
-                <img alt="" src="images/Chico Washington.jpg" class="rounded-x img-responsive">
-                <h3>Chico Washington</h3>
-                
-                <p>
-                  <i>I love that I don’t have to invest in any complicated cryptos, accounts. Just follow the instructions, help boost the platforms, and get paid. I’ve already referred five friends!</i>
-
-              </p>
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-4 wow fadeInLeft" data-wow-delay="600ms">
-              <div class="flat-testimonials-in">
-                <img alt="" src="images/Jimmy  Ghinescu.PNG" class="rounded-x img-responsive">
-                <h3>Jimmy Ghinescu</h3>
-                
-                <p>
-                  <i>In my first week I earned over $300 just doing YouTube and OTC trade tasks. CryptoNet really supports African users and makes it easy for us to earn without needing capital.</i>
-
-              </p>
-              </div>
-            </div>
-          
-
-        <a class="btn btn-default hvr-bounce-to-right" id="button3" href="testimonial.html"><i class="fa fa-send"></i>View All</a>
-        </div>
-
-      </div>
-</div>
-
-
-
-<!-- footer -->
-
-<div class="row padding_margin" id="footer_section">
-  
-      <div class="container">
-        <div class="row " style="margin-top:3%;margin-bottom: 3%;">
-
-          <div class="col-sm-4">
-          <a href="index.html"><img src="images/footerlogo.png" class="img-responsive"></a>
-          <p>Growing platforms and creating endless earning opportunities Globally</p>
-          </div>
-          <div class="col-sm-2">
-             <h4>QUICK LINKS</h4>
-             <hr>
-            <ul class="list-unstyled">
-              <li><a href="about-us.html">About Us</a></li>
-              <li><a href="services.html">Services</a></li>
-              <li><a href="team.html">Our Team</a></li>
-              <li><a href="contact-us.html">Contact Us</a></li>
-            </ul>
-          </div>
-
-        
-
-          <div class="col-sm-3">
-            <h4>CONTACT US</h4>
-             <hr>
-            <ul class="list-unstyled">
-          
-              <li><a href="tel:4232540604"><i class="fa fa-phone"></i>4232540604</a> <span>Enquires</span>,<br><a href="tel:404-869-6686">404-869-6686</a> <span>(Complaints)</span></li>
-              <!-- <li><i class="fa fa-fax"></i>604-256-9834 <span>(Canada)</span>, <br>404-879-5084 <span>(USA)</span></li> -->
-              <li><a href="mailto:info.collibra@collibra.network"><i class="fa fa-envelope"></i>collibra@collibra.network</a> HQ<br>
-              <a href="mailto:Support@collibra.us"><i class="fa fa-envelope"></i>Support@collibra.us</a> US</li>
-            </ul>
-          </div>
-
-            <div class="col-sm-3">
-            <h4>SOCIAL LINKS</h4>
-             <hr>
-             <a href="https://t.me/Emily09076" target="https://t.me/Emily09076" style="
-             position: fixed;
-             bottom: 30px;
-             right: 30px;
-             background-color: #0088cc;
-             color: white;
-             padding: 14px 20px;
-             border-radius: 50px;
-             font-size: 16px;
-             font-weight: bold;
-             text-decoration: none;
-             box-shadow: 0 4px 10px rgba(0, 136, 204, 0.3);
-             transition: all 0.3s ease;
-             z-index: 9999;
-           ">
-             💬 Support
-           </a>
-           
-          <!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- Telegram Button -->
-<a href="https://t.me/Emily09076" 
-   target="_blank" 
-   data-toggle="tooltip" 
-   data-placement="top" 
-   title="Chat with us on Telegram"
-   style="
-     display: inline-block;
-     background-color: #0088cc;
-     color: white;
-     font-size: 20px;
-     padding: 14px 28px;
-     border-radius: 50px;
-     text-decoration: none;
-     font-weight: bold;
-     box-shadow: 0 4px 12px rgba(0, 136, 204, 0.3);
-     transition: background-color 0.3s ease;
-   ">
-   <i class="fa fa-telegram" style="margin-right: 8px;"></i> Social
-</a>
-
-<!-- Tooltip & jQuery + Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
-
-<script>
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
-</script>
-           
-          </div>
-
-        </div>
-      </div>
- </div>
-
-
- <!-- copright -->
-
- <div class="row padding_margin" id="copyright">
-  <div class="container">
-  <p>© 2017.  Collibra Network | All Rights Reserved</p>
-  </div>
- </div>
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="js/latest_Jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/animated-headline.js"></script>
-<script src="js/main.js"></script>
-<script>
-
-
-</script>
-
+    // Tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  </script>
 </body>
 </html>
