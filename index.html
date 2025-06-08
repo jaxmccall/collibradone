@@ -44,7 +44,6 @@
     a, .btn-link, .navbar-nav .nav-link { color: var(--accent);}
     a:hover, a:focus, .btn-link:hover, .navbar-nav .nav-link.active { color: var(--secondary);}
     .lead { font-size: 1.22rem; font-weight: 500; color: var(--primary);}
-    /* Navbar */
     nav[role="navigation"] {
       box-shadow: 0 2px 10px rgba(30,60,114,0.08);
       background: #fff;
@@ -64,7 +63,6 @@
       font-weight: 600;
     }
     .navbar-nav .nav-link:focus-visible { outline: 2px solid var(--accent);}
-    /* Hero Section */
     .hero-section {
       background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       color: #fff;
@@ -125,7 +123,6 @@
       object-fit: cover;
       margin: 0 auto; display: block;
     }
-    /* Section Titles + Underlines */
     .section-title {
       font-family: 'Montserrat', 'Inter', Arial, sans-serif;
       font-weight: 700;
@@ -139,7 +136,6 @@
       border: 0; margin: 0.7em auto 2.1em auto;
       border-radius: 4px;
     }
-    /* Back to Top */
     #backToTop {
       position: fixed; bottom: 28px; right: 22px; z-index: 1200;
       background: var(--primary);
@@ -155,7 +151,6 @@
     }
     #backToTop.show { opacity: 1; pointer-events: auto;}
     #backToTop:focus-visible { outline: 3px solid var(--accent);}
-    /* Services */
     .service-card {
       min-height: 350px;
       background: #fff;
@@ -188,7 +183,6 @@
     .service-card h3 { color: var(--secondary);}
     .service-card ul { padding-left: 1.2em; margin-bottom: 0;}
     .service-card li { font-size: 1rem; color: var(--muted-light);}
-    /* Team */
     .team-img {
       width: 120px; height: 120px;
       object-fit: cover;
@@ -221,7 +215,6 @@
       font-size: 0.98rem;
       padding: 0.5em 1em;
     }
-    /* Partners */
     .partner-logo {
       height: 56px;
       margin: 0 auto;
@@ -241,37 +234,56 @@
       box-shadow: 0 8px 32px rgba(30,60,114,0.12);
     }
     .swiper-partners { padding: 1rem 0 2rem 0; }
-    /* Testimonials */
+    /* --- COMPACT TESTIMONIAL SECTION --- */
+    #testimonials {
+      padding-top: 2.5rem !important;
+      padding-bottom: 2.5rem !important;
+    }
+    #testimonials .section-title {
+      margin-bottom: 0.4em;
+      font-size: 2rem;
+    }
+    #testimonials .lead {
+      margin-bottom: 1.2em;
+      font-size: 1.08rem;
+    }
+    .swiper-testimonials {
+      padding-bottom: 1.2rem !important;
+    }
     .testimonial-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 4px 18px rgba(30,60,114,0.07);
-      border: 1px solid rgba(30,60,114,0.04);
-      min-height: 340px;
-      color: var(--body);
-      text-align: center;
-      position: relative;
-      transition: box-shadow 0.18s, border 0.18s, transform 0.18s;
+      min-height: 180px;
+      padding: 1.1rem 1rem 1.2rem 1rem !important;
+      margin-bottom: 0.5rem;
     }
-    .testimonial-card:hover {
-      box-shadow: 0 10px 36px rgba(46,132,232,0.13);
-      border-color: var(--accent);
-      transform: scale(1.02);
+    .testimonial-img {
+      width: 62px !important;
+      height: 62px !important;
+      margin-bottom: 0.7em;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      box-shadow: 0 2px 8px rgba(30,60,114,0.09);
     }
-    .testimonial-stars { color: #ffd700; font-size: 1.02em; margin-bottom: 0.3em;}
+    .testimonial-stars {
+      font-size: 1em;
+      margin-bottom: 0.18em;
+    }
+    .testimonial-card h4 {
+      font-size: 1.07rem;
+      margin-bottom: 0.1em;
+    }
+    .testimonial-card p {
+      font-size: 0.96rem;
+    }
     .testimonial-client-logo {
-      max-width: 56px; max-height: 32px; object-fit: contain;
-      margin: 0.4em auto 0.2em auto;
-      display: block;
-      background: #fff;
-      border-radius: 6px;
-      box-shadow: 0 1px 5px rgba(30,60,114,0.07);
+      max-width: 40px !important;
+      max-height: 20px !important;
+      margin-bottom: 0.2em;
     }
-    .swiper-testimonials { padding-bottom: 2.2rem; }
-    .swiper-pagination-bullets .swiper-pagination-bullet { background: var(--secondary); opacity: 0.5;}
-    .swiper-pagination-bullets .swiper-pagination-bullet-active { background: var(--accent); opacity: 1;}
-    /* Footer */
+    @media (max-width: 767px) {
+      #testimonials { padding-top: 1.2rem !important; padding-bottom: 1.2rem !important; }
+      .testimonial-card { padding: 1rem 0.5rem 1rem 0.5rem !important; }
+    }
     .footer {
       background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       color: #fff;
@@ -316,9 +328,7 @@
       color: #e0e3ea;
       letter-spacing: 0.01em;
     }
-    /* Focus visible for accessibility */
     :focus-visible { outline: 2.5px solid var(--accent); outline-offset: 2px;}
-    /* Responsive tweaks */
     @media (max-width: 991px) {
       .hero-section { padding-top: 3rem; padding-bottom: 2rem; }
     }
@@ -579,10 +589,10 @@
       </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="py-5" id="testimonials" style="background: #f6f8fb;">
+    <!-- Testimonials Section: COMPACT VERSION -->
+    <section class="py-4" id="testimonials" style="background: #f6f8fb;">
       <div class="container">
-        <div class="text-center mb-5">
+        <div class="text-center mb-4">
           <h2 class="section-title">What Our Clients Say</h2>
           <hr class="section-hr">
           <p class="lead text-muted">Stories of success and growth</p>
@@ -596,7 +606,7 @@
                 </div>
                 <img src="images/Leroy Bell.jpg" alt="Leroy Bell, Business Partner" class="testimonial-img" loading="lazy">
                 <h4 class="text-center">Leroy Bell</h4>
-                <p class="text-center text-muted mb-3">Business Partner</p>
+                <p class="text-center text-muted mb-2">Business Partner</p>
                 <img src="images/image1.png" class="testimonial-client-logo" alt="Partner Company Logo">
                 <p class="fst-italic">"Collibrait Solutions delivered a seamless digital transformation for our company. Their team is reliable, communicative, and results-driven."</p>
               </div>
@@ -608,7 +618,7 @@
                 </div>
                 <img src="images/Chico Washington.jpg" alt="Chico Washington, Creator" class="testimonial-img" loading="lazy">
                 <h4 class="text-center">Chico Washington</h4>
-                <p class="text-center text-muted mb-3">Creator</p>
+                <p class="text-center text-muted mb-2">Creator</p>
                 <img src="images/image2.png" class="testimonial-client-logo" alt="Partner Company Logo">
                 <p class="fst-italic">"Thanks to Collibrait’s growth campaigns, my channel and brand have reached new audiences. The engagement is authentic and the support is excellent."</p>
               </div>
@@ -620,7 +630,7 @@
                 </div>
                 <img src="images/Jimmy Ghinescu.PNG" alt="Jimmy Ghinescu, Client" class="testimonial-img" loading="lazy">
                 <h4 class="text-center">Jimmy Ghinescu</h4>
-                <p class="text-center text-muted mb-3">Client</p>
+                <p class="text-center text-muted mb-2">Client</p>
                 <img src="images/image3.png" class="testimonial-client-logo" alt="Partner Company Logo">
                 <p class="fst-italic">"We've seen measurable, lasting results from our partnership with Collibrait Solutions. Highly recommended for any business ready to scale."</p>
               </div>
@@ -628,13 +638,13 @@
           </div>
           <div class="swiper-pagination"></div>
         </div>
-        <div class="text-center mt-4">
-          <a href="testimonial.html" class="btn btn-primary">View All Testimonials</a>
+        <div class="text-center mt-3">
+          <a href="testimonial.html" class="btn btn-primary btn-sm">View All Testimonials</a>
         </div>
       </div>
     </section>
 
-    <!-- Contact / Footer CTA -->
+    <!-- Contact Call To Action -->
     <section class="py-5 bg-dark text-white" id="contact">
       <div class="container">
         <div class="row align-items-center">
@@ -703,13 +713,9 @@
       </div>
     </div>
   </footer>
-
-  <!-- Back to Top Button -->
   <button id="backToTop" aria-label="Back to top" title="Back to top">
     <i class="fas fa-arrow-up"></i>
   </button>
-
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   <script>
@@ -723,7 +729,6 @@
         }
       });
     });
-
     // Active nav link on scroll
     const sections = document.querySelectorAll('main section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -738,7 +743,6 @@
         if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
       });
     });
-
     // Back to Top button
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
@@ -746,7 +750,6 @@
       else backToTop.classList.remove('show');
     });
     backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-
     // Swiper Partners Carousel
     new Swiper('.swiper-partners', {
       slidesPerView: 2,
@@ -759,7 +762,6 @@
       loop: true,
       autoplay: { delay: 2200, disableOnInteraction: false }
     });
-
     // Swiper Testimonials Carousel
     new Swiper('.swiper-testimonials', {
       slidesPerView: 1,
@@ -767,7 +769,6 @@
       autoplay: { delay: 5500, disableOnInteraction: false },
       pagination: { el: '.swiper-pagination', clickable: true }
     });
-
     // Tooltips
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.map(function (tooltipTriggerEl) {
